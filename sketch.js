@@ -1,9 +1,6 @@
 const particles = [];
 let cnt = 0;
 
-function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
-}
 
 function setup() {
     canvas = createCanvas(windowWidth, windowHeight);
@@ -17,15 +14,18 @@ function setup() {
 
 function draw() {
     background('rgba(248,248,255, 0.6)');
-
+    
     particles.forEach((particle, idx) => {
         particle.update();
         particle.draw();
         particle.checkParticles(particles.slice(idx));
     });
-
+    
 }
 
+function windowResized() {
+    resizeCanvas(windowWidth, windowHeight);
+}
 class Particle {
     constructor() {
         this.pos = createVector(random(width), random(height));
